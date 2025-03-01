@@ -1,12 +1,12 @@
-export function TaskInput({ task, setTask, category, setCategory, onAdd }) {
-  function handleTextInput(event) {
-    setTask(event.target.value);
-    console.log(event.target.value);
-  }
-  function handleSelect(event) {
-    setCategory(event.target.value);
-    console.log(event.target.value);
-  }
+export function TaskInput({
+  task,
+  setTask,
+  category,
+  setCategory,
+  onAdd,
+  filter,
+  setFilter,
+}) {
   return (
     <div className="container mt-4">
       <div className="row g-2">
@@ -16,20 +16,19 @@ export function TaskInput({ task, setTask, category, setCategory, onAdd }) {
             className="form-control"
             placeholder="New Task"
             value={task}
-            onChange={handleTextInput}
+            onChange={(event) => setTask(event.target.value)}
           ></input>
         </div>
         <div className="col-md-4">
           <select
             className="form-select"
             value={category}
-            onChange={handleSelect}
+            onChange={(event) => setCategory(event.target.value)}
           >
             <option value="">Select category</option>
             <option value="work">Work</option>
             <option value="school">School</option>
             <option value="personal">Personal</option>
-            <option value="health">Health</option>
           </select>
         </div>
       </div>
@@ -40,14 +39,17 @@ export function TaskInput({ task, setTask, category, setCategory, onAdd }) {
           </button>
         </div>
       </div>
-      <div className="row mt-3 mb-3">
-        <div className="col-md-4">
-          <select>
-            <option value="">Filter</option>
+      <div className="row mt-3 mb-3 justify-content-center">
+        <div className="col-12">
+          <select
+            className="form-select"
+            value={filter}
+            onChange={(event) => setFilter(event.target.value)}
+          >
+            <option value="">All</option>
             <option value="work">Work</option>
             <option value="school">School</option>
             <option value="personal">Personal</option>
-            <option value="health">Health</option>
           </select>
         </div>
       </div>
